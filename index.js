@@ -69,13 +69,13 @@ const getData = async () => {
       await page.close();
       uniqueId = uniqueId + 1;
     }
-
-	fs.writeFile('uuid.txt', ''+uniqueId, { flag: 'wx' }, function (err) {
-		if (err) throw err;
-		console.log("It's saved!");
-	});	
-	
     await browser.close();
+
+    fs.writeFile('uuid.txt', '' + uniqueId, { flag: 'wx' }, function (err) {
+      if (err) throw err;
+      console.log("It's saved!");
+    });
+
     return true;
   } catch (error) {
     console.error(`getData error: ${error}`);
