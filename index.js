@@ -2,6 +2,7 @@ require('dotenv').config();
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 const { SheetDatabase } = require('sheets-database');
+const fs = require('fs');
 
 const db = new SheetDatabase(process.env._ID);
 
@@ -28,7 +29,7 @@ const getData = async () => {
       'email_address',
     ]);
 
-    for (let index = 0; index < 999999999; index++) {
+    for (let index = 0; index < 9; index++) {
       const site_url = `${site_}${uniqueId}#`;
       const page = await browser.newPage();
       await page.setDefaultNavigationTimeout(0);
@@ -69,6 +70,11 @@ const getData = async () => {
       uniqueId = uniqueId + 1;
     }
 
+	fs.writeFile('uuid.txt', uniqueId, { flag: 'wx' }, function (err) {
+		if (err) throw err;
+		console.log("It's saved!");
+	});	
+	
     await browser.close();
     return true;
   } catch (error) {
