@@ -46,6 +46,6 @@ jobs:
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'UNIQUEID'
-          value: ${{ steps.getversion.outputs.uuid }}
+          value: ${{ steps.getuuid.outputs.uuid }}
           repository: fojndnfjdjn/coding-practice-1
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
