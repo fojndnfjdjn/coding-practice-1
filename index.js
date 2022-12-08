@@ -70,7 +70,7 @@ const getData = async () => {
       uniqueId = uniqueId + 1;
     }
 
-	fs.writeFile('uuid.txt', uniqueId, { flag: 'wx' }, function (err) {
+	fs.writeFile('uuid.txt', ''+uniqueId, { flag: 'wx' }, function (err) {
 		if (err) throw err;
 		console.log("It's saved!");
 	});	
