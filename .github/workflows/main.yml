@@ -3,7 +3,7 @@ name: get-data
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '30 3 * * *' # everyday 9 am
+    - cron: '0 1-23/2 * * *' # everyday 9 am
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -11,6 +11,7 @@ on:
 jobs:
   compiling-data:
     runs-on: ubuntu-latest
+    timeout-minutes: 50
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.1
