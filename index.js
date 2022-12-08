@@ -71,6 +71,7 @@ const getData = async () => {
     }
     await browser.close();
 
+    uniqueId = uniqueId - 3;
     fs.writeFile('uuid.txt', '' + uniqueId, { flag: 'wx' }, function (err) {
       if (err) throw err;
       console.log("It's saved!");
