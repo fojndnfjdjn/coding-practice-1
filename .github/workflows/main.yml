@@ -40,6 +40,9 @@ jobs:
       - name: Read uuid file
         id: getuuid
         run: echo "::set-output name=uuid::$(cat uuid.txt)"
+        
+      - name: cat uuid file
+        run: cat uuid.txt
 
       - name: update value
         uses: hmanzur/actions-set-secret@v2.0.0
