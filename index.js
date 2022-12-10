@@ -38,9 +38,9 @@ const getData = async () => {
         'user-agent':
           'Mozilla/5.0 (iPhone; CPU iPhone OS 16_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Mobile/15E148 Safari/604.1',
       });
-
+console.log('before goto')
       await page.goto(site_url, { waitUntil: 'networkidle0' });
-
+console.log('after goto')
       const htmlAfterLoadComplete = await page.evaluate(
         () => document.querySelector('#WD2E-r').outerHTML
       );
@@ -72,10 +72,10 @@ const getData = async () => {
     }
 
     uniqueId = uniqueId - 3;
-    fs.writeFile('uuid.txt', '' + uniqueId, { flag: 'wx' }, function (err) {
-      if (err) throw err;
-      console.log("It's saved!");
-    });
+//     fs.writeFile('uuid.txt', '' + uniqueId, { flag: 'wx' }, function (err) {
+//       if (err) throw err;
+//       console.log("It's saved!");
+//     });
 
     return true;
   } catch (error) {
