@@ -10,7 +10,6 @@ const getData = async () => {
   try {
     const site_ = process.env.site_;
     let uniqueId = parseInt(process.env.uniqueId, 10);
-    const browser = await puppeteer.launch({ headless: true });
 
     await db.useServiceAccount({
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -30,6 +29,7 @@ const getData = async () => {
     ]);
 
     for (let index = 0; index < 900; index++) {
+      const browser = await puppeteer.launch({ headless: true });  
       const site_url = `${site_}${uniqueId}#`;
       const page = await browser.newPage();
       await page.setDefaultNavigationTimeout(0);
@@ -42,7 +42,7 @@ const getData = async () => {
       await page.goto(site_url, { waitUntil: 'networkidle0' });
 
       const htmlAfterLoadComplete = await page.evaluate(
-        () => document.querySelector('*').outerHTML
+        () => document.querySelector('#WD2E-r').outerHTML
       );
 
       const $ = cheerio.load(htmlAfterLoadComplete);
@@ -67,9 +67,9 @@ const getData = async () => {
       });
 
       await page.close();
+      await browser.close();
       uniqueId = uniqueId + 1;
     }
-    await browser.close();
 
     uniqueId = uniqueId - 3;
     fs.writeFile('uuid.txt', '' + uniqueId, { flag: 'wx' }, function (err) {
