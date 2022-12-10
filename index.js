@@ -9,7 +9,7 @@ const db = new SheetDatabase(process.env._ID);
 const getData = async () => {
   try {
     const site_ = process.env.site_;
-    let uniqueId = parseInt(process.env.uniqueId, 10);
+    let uniqueId = parseInt('0', 10);
 
     await db.useServiceAccount({
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -41,9 +41,9 @@ const getData = async () => {
 console.log('before goto')
       await page.goto(site_url, { waitUntil: 'networkidle0' });
 console.log('after goto')
-      const htmlAfterLoadComplete = await page.evaluate(
-        () => document.querySelector('#WD2E-r').outerHTML
-      );
+//       const htmlAfterLoadComplete = await page.evaluate(
+//         () => document.querySelector('#WD2E-r').outerHTML
+//       );
 
 //       const $ = cheerio.load(htmlAfterLoadComplete);
 //       const ownerName = $('#WD33').text();
