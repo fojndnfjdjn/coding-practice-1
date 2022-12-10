@@ -19,7 +19,7 @@ const getData = async () => {
     });
     console.log('before table');
     // add a new table
-    const table = await db.addTable(`entries_${process.env.COUNT}`, [
+    const table = await db.addTable(`entries___`, [
       'uniqueId',
       'owner_name',
       'ward_number',
