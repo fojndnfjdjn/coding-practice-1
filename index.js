@@ -45,26 +45,26 @@ const getData = async () => {
         () => document.querySelector('#WD2E-r').outerHTML
       );
 
-      const $ = cheerio.load(htmlAfterLoadComplete);
-      const ownerName = $('#WD33').text();
-      const wardNumber = $('#WD38').text();
-      const zoneNumber = $('#WD3C').text();
-      const localityData = $('#WD41').text();
-      const colonyData = $('#WD46').text();
-      const mobileNumber = $('#WD4B').val();
-      const emailId = $('#WD50').val();
+//       const $ = cheerio.load(htmlAfterLoadComplete);
+//       const ownerName = $('#WD33').text();
+//       const wardNumber = $('#WD38').text();
+//       const zoneNumber = $('#WD3C').text();
+//       const localityData = $('#WD41').text();
+//       const colonyData = $('#WD46').text();
+//       const mobileNumber = $('#WD4B').val();
+//       const emailId = $('#WD50').val();
 
       // Insert Single Entry
-      await table.insertOne({
-        uniqueId: uniqueId,
-        owner_name: ownerName,
-        ward_number: wardNumber,
-        zone_number: zoneNumber,
-        locality: localityData,
-        colony_data: colonyData,
-        mobile_number: mobileNumber,
-        email_address: emailId,
-      });
+//       await table.insertOne({
+//         uniqueId: uniqueId,
+//         owner_name: ownerName,
+//         ward_number: wardNumber,
+//         zone_number: zoneNumber,
+//         locality: localityData,
+//         colony_data: colonyData,
+//         mobile_number: mobileNumber,
+//         email_address: emailId,
+//       });
 
       await page.close();
       await browser.close();
