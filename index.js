@@ -42,9 +42,9 @@ const getData = async () => {
       await page.goto(site_url, { waitUntil: 'networkidle0' });
 
       const htmlAfterLoadComplete = await page.evaluate(
-        () => document.querySelector('*').outerHTML
+        () => document.querySelector('#WD2E-r').outerHTML
       );
-
+      console.log(htmlAfterLoadComplete)
       const $ = cheerio.load(htmlAfterLoadComplete);
       const ownerName = $('#WD33').text();
       const wardNumber = $('#WD38').text();
