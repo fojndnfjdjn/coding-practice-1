@@ -8,18 +8,17 @@ const db = new SheetDatabase(process.env._ID);
 
 const getData = async () => {
   try {
-    console.log('inside try');
     const site_ = process.env.site_;
     let uniqueId = parseInt(process.env.uniqueId, 10);
     const browser = await puppeteer.launch({ headless: true });
-    console.log('before service use account');
+
     await db.useServiceAccount({
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
     });
-    console.log('before table');
+
     // add a new table
-    const table = await db.addTable(`entries___`, [
+    const table = await db.addTable(`entries_${process.env.COUNT}`, [
       'uniqueId',
       'owner_name',
       'ward_number',
@@ -29,9 +28,8 @@ const getData = async () => {
       'mobile_number',
       'email_address',
     ]);
-    console.log('before for loop');
+
     for (let index = 0; index < 900; index++) {
-      console.log('inside for loop', index);
       const site_url = `${site_}${uniqueId}#`;
       const page = await browser.newPage();
       await page.setDefaultNavigationTimeout(0);
