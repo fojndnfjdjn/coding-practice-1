@@ -28,9 +28,11 @@ const getData = async () => {
       'mobile_number',
       'email_address',
     ]);
-
+    console.log('outside for loop');
     for (let index = 0; index < 900; index++) {
+      console.log('inside for loop');
       const site_url = `${site_}${uniqueId}#`;
+      console.log('site_url', site_url);
       const page = await browser.newPage();
       await page.setDefaultNavigationTimeout(0);
       await page.setDefaultTimeout(0);
@@ -38,13 +40,13 @@ const getData = async () => {
         'user-agent':
           'Mozilla/5.0 (iPhone; CPU iPhone OS 16_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Mobile/15E148 Safari/604.1',
       });
-
+      console.log('before goto');
       await page.goto(site_url, { waitUntil: 'networkidle0' });
-
+      console.log('after goto');
       const htmlAfterLoadComplete = await page.evaluate(
         () => document.querySelector('#WD2E-r').outerHTML
       );
-      console.log(htmlAfterLoadComplete)
+      console.log(htmlAfterLoadComplete);
       const $ = cheerio.load(htmlAfterLoadComplete);
       const ownerName = $('#WD33').text();
       const wardNumber = $('#WD38').text();
