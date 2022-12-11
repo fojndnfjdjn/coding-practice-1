@@ -53,7 +53,7 @@ const getData = async () => {
       const colonyData = $('#WD46').text();
       const mobileNumber = $('#WD4B').val();
       const emailId = $('#WD50').val();
-
+      console.log(uniqueId, ' ', owner_name);
       // Insert Single Entry
       await table.insertOne({
         uniqueId: uniqueId,
