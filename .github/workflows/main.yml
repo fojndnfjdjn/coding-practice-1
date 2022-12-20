@@ -3,7 +3,7 @@ name: get-data
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '0 * * * *' # every hour
+    - cron: '0 */8 * * *' # every hour
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
